@@ -2,6 +2,7 @@
 <web-app id="WebApp_ID" version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
 	<display-name>com.youtube.rest</display-name>
 	<welcome-file-list>
+		<welcome-file>readme.html</welcome-file>
 		<welcome-file>index.html</welcome-file>
 		<welcome-file>index.htm</welcome-file>
 		<welcome-file>index.jsp</welcome-file>
@@ -9,4 +10,27 @@
 		<welcome-file>default.htm</welcome-file>
 		<welcome-file>default.jsp</welcome-file>
 	</welcome-file-list>
+	  <!--  REST -->
+    <!-- Configuration for JAX-RS -->
+   <servlet>
+   	  <servlet-name>Jersey REST Service</servlet-name>
+   	  <!-- org.glassfish.jersey.servlet.ServletContainer for jersey v2 on gf 4 -->
+   	  <!-- com.sun.jersey.spi.container.servlet.ServletContainer for jersey v1.5 on gf 3 -->
+   	  <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
+   	
+   	  <init-param>
+   	  <!-- <param-name>com.sun.jersey.config.property.packages</param-name> GF 3 + jersey 1.5 -->
+   	  <!-- <param-name>jersey.config.server.provider.packages</param-name> GF 4+jersey 2.0 -->
+   	     <param-name>jersey.config.server.provider.packages</param-name>
+   	     <param-value>com.youtube.rest</param-value>
+      </init-param>
+
+	  <load-on-startup>1</load-on-startup>   	   	
+   </servlet>
+   
+   <servlet-mapping>
+      <servlet-name>Jersey REST Service</servlet-name>
+      <url-pattern>/api/*</url-pattern>
+   </servlet-mapping>
+	
 </web-app>
